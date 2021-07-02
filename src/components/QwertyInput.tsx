@@ -5,8 +5,7 @@ function QwertyInput(): JSX.Element {
   const [text, setText] = useState('')
 
   const addLetter = (letter: string) => {
-    setText(text + letter);
-    // better: setText(prev => prev + letter);
+    setText(prev => prev + letter);
   }
 
   const handleBackspace = () => {
@@ -23,6 +22,7 @@ function QwertyInput(): JSX.Element {
     <>
       <input
         value={text}
+        onChange={(event) => setText(event.target.value)}
       />
       <button onClick={() => addLetter('a')}>a</button>
       <button onClick={() => addLetter('Q')}>Q</button>
